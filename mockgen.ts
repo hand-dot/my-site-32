@@ -138,8 +138,9 @@ beforeEach(() => {
 
         const moduleName = moduleFile.replace('.d.ts', '');
         const mockCode = `vi.mock('${moduleName}', () => ({__esModule: true,default: {${mocks}}}));`;
-        const formattedCode = await prettier.format(mockCode, { parser: "typescript" });
-        fileContent += formattedCode + '\n';
+        fileContent += mockCode + '\n';
     }
-    fs.writeFileSync(path.join(__dirname, 'test-setup.js'), fileContent);
+    const formattedCode = await prettier.format(fileContent, { parser: "typescript" });
+
+    fs.writeFileSync(path.join(__dirname, 'test-setup.js'), formattedCode);
 })()

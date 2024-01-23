@@ -1,9 +1,8 @@
-import { beforeEach, vi } from 'vitest';
+import { beforeEach, vi } from "vitest";
 
 beforeEach(() => {
-    vi.resetAllMocks();
+  vi.resetAllMocks();
 });
-
 
 vi.mock("wix-activity-counters.v2", () => ({
   __esModule: true,
@@ -83,7 +82,6 @@ vi.mock("wix-activity-counters.v2", () => ({
     find: vi.fn(),
   },
 }));
-
 vi.mock("wix-animations-frontend", () => ({
   __esModule: true,
   default: {
@@ -104,7 +102,6 @@ vi.mock("wix-animations-frontend", () => ({
     easing: vi.fn(),
   },
 }));
-
 vi.mock("wix-animations", () => ({
   __esModule: true,
   default: {
@@ -125,9 +122,7 @@ vi.mock("wix-animations", () => ({
     easing: vi.fn(),
   },
 }));
-
 vi.mock("wix-application-backend", () => ({ __esModule: true, default: {} }));
-
 vi.mock("wix-application", () => ({
   __esModule: true,
   default: {
@@ -139,12 +134,10 @@ vi.mock("wix-application", () => ({
     vendorProductId: vi.fn(),
   },
 }));
-
 vi.mock("wix-auth", () => ({
   __esModule: true,
   default: { elevate: vi.fn() },
 }));
-
 vi.mock("wix-authentication-management.v2", () => ({
   __esModule: true,
   default: {
@@ -224,7 +217,6 @@ vi.mock("wix-authentication-management.v2", () => ({
     find: vi.fn(),
   },
 }));
-
 vi.mock("wix-billing-backend", () => ({
   __esModule: true,
   default: {
@@ -406,7 +398,6 @@ vi.mock("wix-billing-backend", () => ({
     total: vi.fn(),
   },
 }));
-
 vi.mock("wix-blog-backend", () => ({
   __esModule: true,
   default: {
@@ -1570,7 +1561,6 @@ vi.mock("wix-blog-backend", () => ({
     deleteTag: vi.fn(),
   },
 }));
-
 vi.mock("wix-bookings-backend", () => ({
   __esModule: true,
   default: {
@@ -1834,7 +1824,6 @@ vi.mock("wix-bookings-backend", () => ({
     suppressAuth: vi.fn(),
   },
 }));
-
 vi.mock("wix-bookings-frontend", () => ({
   __esModule: true,
   default: {
@@ -1894,7 +1883,6 @@ vi.mock("wix-bookings-frontend", () => ({
     number: vi.fn(),
   },
 }));
-
 vi.mock("wix-bookings", () => ({
   __esModule: true,
   default: {
@@ -1954,7 +1942,6 @@ vi.mock("wix-bookings", () => ({
     number: vi.fn(),
   },
 }));
-
 vi.mock("wix-bookings.v1", () => ({
   __esModule: true,
   default: {
@@ -2185,7 +2172,6 @@ vi.mock("wix-bookings.v1", () => ({
     scheduleVersion: vi.fn(),
   },
 }));
-
 vi.mock("wix-bookings.v2", () => ({
   __esModule: true,
   default: {
@@ -6056,7 +6042,6 @@ vi.mock("wix-bookings.v2", () => ({
     calculatePrice: vi.fn(),
   },
 }));
-
 vi.mock("wix-business-tools.v2", () => ({
   __esModule: true,
   default: {
@@ -6313,12 +6298,10 @@ vi.mock("wix-business-tools.v2", () => ({
     updateConsentPolicy: vi.fn(),
   },
 }));
-
 vi.mock("wix-captcha-backend", () => ({
   __esModule: true,
   default: { authorize: vi.fn(), error: vi.fn(), success: vi.fn() },
 }));
-
 vi.mock("wix-captcha.v2", () => ({
   __esModule: true,
   default: {
@@ -6331,7 +6314,6 @@ vi.mock("wix-captcha.v2", () => ({
     errorId: vi.fn(),
   },
 }));
-
 vi.mock("wix-chat-backend", () => ({
   __esModule: true,
   default: {
@@ -6351,7 +6333,6 @@ vi.mock("wix-chat-backend", () => ({
     metadata: vi.fn(),
   },
 }));
-
 vi.mock("wix-comments.v2", () => ({
   __esModule: true,
   default: {
@@ -7000,12 +6981,10 @@ vi.mock("wix-comments.v2", () => ({
     draftContentAction: vi.fn(),
   },
 }));
-
 vi.mock("wix-configs-backend", () => ({
   __esModule: true,
   default: { getPackageConfig: vi.fn() },
 }));
-
 vi.mock("wix-crm-backend", () => ({
   __esModule: true,
   default: {
@@ -7282,7 +7261,6 @@ vi.mock("wix-crm-backend", () => ({
     currentPage: vi.fn(),
   },
 }));
-
 vi.mock("wix-crm-frontend", () => ({
   __esModule: true,
   default: {
@@ -7386,7 +7364,6 @@ vi.mock("wix-crm-frontend", () => ({
     variables: vi.fn(),
   },
 }));
-
 vi.mock("wix-crm", () => ({
   __esModule: true,
   default: {
@@ -7492,7 +7469,6 @@ vi.mock("wix-crm", () => ({
     variables: vi.fn(),
   },
 }));
-
 vi.mock("wix-crm.v2", () => ({
   __esModule: true,
   default: {
@@ -8590,7 +8566,6 @@ vi.mock("wix-crm.v2", () => ({
     overrides: vi.fn(),
   },
 }));
-
 vi.mock("wix-dashboard", () => ({
   __esModule: true,
   default: {
@@ -8610,7 +8585,6 @@ vi.mock("wix-dashboard", () => ({
     remove: vi.fn(),
   },
 }));
-
 vi.mock("wix-data", () => ({
   __esModule: true,
   default: {
@@ -8682,7 +8656,6 @@ vi.mock("wix-data", () => ({
     consistentRead: vi.fn(),
   },
 }));
-
 vi.mock("wix-data.v2", () => ({
   __esModule: true,
   default: {
@@ -9419,7 +9392,6 @@ vi.mock("wix-data.v2", () => ({
     paging: vi.fn(),
   },
 }));
-
 vi.mock("wix-dataset", () => ({
   __esModule: true,
   default: {
@@ -9430,7 +9402,6 @@ vi.mock("wix-dataset", () => ({
     offset: vi.fn(),
   },
 }));
-
 vi.mock("wix-ecom-backend", () => ({
   __esModule: true,
   default: {
@@ -12879,7 +12850,6 @@ vi.mock("wix-ecom-backend", () => ({
     calculateDiscountRules: vi.fn(),
   },
 }));
-
 vi.mock("wix-ecom.v2", () => ({
   __esModule: true,
   default: {
@@ -12903,7 +12873,6 @@ vi.mock("wix-ecom.v2", () => ({
     currencies: vi.fn(),
   },
 }));
-
 vi.mock("wix-editor", () => ({
   __esModule: true,
   default: {
@@ -12921,7 +12890,6 @@ vi.mock("wix-editor", () => ({
     maxWidth: vi.fn(),
   },
 }));
-
 vi.mock("wix-email-marketing.v2", () => ({
   __esModule: true,
   default: {
@@ -13279,7 +13247,6 @@ vi.mock("wix-email-marketing.v2", () => ({
     resolveActualFromAddress: vi.fn(),
   },
 }));
-
 vi.mock("wix-events-backend", () => ({
   __esModule: true,
   default: {
@@ -13683,7 +13650,6 @@ vi.mock("wix-events-backend", () => ({
     totalPages: vi.fn(),
   },
 }));
-
 vi.mock("wix-events-frontend", () => ({
   __esModule: true,
   default: {
@@ -13868,7 +13834,6 @@ vi.mock("wix-events-frontend", () => ({
     discountErrors: vi.fn(),
   },
 }));
-
 vi.mock("wix-events", () => ({
   __esModule: true,
   default: {
@@ -14053,7 +14018,6 @@ vi.mock("wix-events", () => ({
     discountErrors: vi.fn(),
   },
 }));
-
 vi.mock("wix-events.v2", () => ({
   __esModule: true,
   default: {
@@ -17646,7 +17610,6 @@ vi.mock("wix-events.v2", () => ({
     getPolicy: vi.fn(),
   },
 }));
-
 vi.mock("wix-fetch", () => ({
   __esModule: true,
   default: {
@@ -17666,7 +17629,6 @@ vi.mock("wix-fetch", () => ({
     url: vi.fn(),
   },
 }));
-
 vi.mock("wix-forms.v2", () => ({
   __esModule: true,
   default: {
@@ -17880,7 +17842,6 @@ vi.mock("wix-forms.v2", () => ({
     bulkMarkSubmissionsAsSeen: vi.fn(),
   },
 }));
-
 vi.mock("wix-forum-backend", () => ({
   __esModule: true,
   default: {
@@ -17971,7 +17932,6 @@ vi.mock("wix-forum-backend", () => ({
     commentId: vi.fn(),
   },
 }));
-
 vi.mock("wix-forum.v2", () => ({
   __esModule: true,
   default: {
@@ -18236,7 +18196,6 @@ vi.mock("wix-forum.v2", () => ({
     reportType: vi.fn(),
   },
 }));
-
 vi.mock("wix-groups-backend", () => ({
   __esModule: true,
   default: {
@@ -18381,7 +18340,6 @@ vi.mock("wix-groups-backend", () => ({
     memberIds: vi.fn(),
   },
 }));
-
 vi.mock("wix-groups.v2", () => ({
   __esModule: true,
   default: {
@@ -19168,7 +19126,6 @@ vi.mock("wix-groups.v2", () => ({
     role: vi.fn(),
   },
 }));
-
 vi.mock("wix-http-functions", () => ({
   __esModule: true,
   default: {
@@ -19203,7 +19160,6 @@ vi.mock("wix-http-functions", () => ({
     status: vi.fn(),
   },
 }));
-
 vi.mock("wix-inbox.v2", () => ({
   __esModule: true,
   default: {
@@ -19422,7 +19378,6 @@ vi.mock("wix-inbox.v2", () => ({
     businessUserId: vi.fn(),
   },
 }));
-
 vi.mock("wix-location-frontend", () => ({
   __esModule: true,
   default: {
@@ -19432,7 +19387,6 @@ vi.mock("wix-location-frontend", () => ({
     disableScrollToTop: vi.fn(),
   },
 }));
-
 vi.mock("wix-location", () => ({
   __esModule: true,
   default: {
@@ -19442,7 +19396,6 @@ vi.mock("wix-location", () => ({
     disableScrollToTop: vi.fn(),
   },
 }));
-
 vi.mock("wix-loyalty.v2", () => ({
   __esModule: true,
   default: {
@@ -20311,7 +20264,6 @@ vi.mock("wix-loyalty.v2", () => ({
     updateTiersProgramSettings: vi.fn(),
   },
 }));
-
 vi.mock("wix-marketing-backend", () => ({
   __esModule: true,
   default: {
@@ -20377,7 +20329,6 @@ vi.mock("wix-marketing-backend", () => ({
     triggeredByAnonymizeRequest: vi.fn(),
   },
 }));
-
 vi.mock("wix-marketing-tags.v2", () => ({
   __esModule: true,
   default: {
@@ -20438,7 +20389,6 @@ vi.mock("wix-marketing-tags.v2", () => ({
     tagType: vi.fn(),
   },
 }));
-
 vi.mock("wix-marketing.v2", () => ({
   __esModule: true,
   default: {
@@ -20720,7 +20670,6 @@ vi.mock("wix-marketing.v2", () => ({
     specification: vi.fn(),
   },
 }));
-
 vi.mock("wix-media-backend", () => ({
   __esModule: true,
   default: {
@@ -20783,7 +20732,6 @@ vi.mock("wix-media-backend", () => ({
     uploadToken: vi.fn(),
   },
 }));
-
 vi.mock("wix-media.v2", () => ({
   __esModule: true,
   default: {
@@ -21146,7 +21094,6 @@ vi.mock("wix-media.v2", () => ({
     paging: vi.fn(),
   },
 }));
-
 vi.mock("wix-members-backend", () => ({
   __esModule: true,
   default: {
@@ -21271,7 +21218,6 @@ vi.mock("wix-members-backend", () => ({
     name: vi.fn(),
   },
 }));
-
 vi.mock("wix-members-frontend", () => ({
   __esModule: true,
   default: {
@@ -21339,7 +21285,6 @@ vi.mock("wix-members-frontend", () => ({
     name: vi.fn(),
   },
 }));
-
 vi.mock("wix-members", () => ({
   __esModule: true,
   default: {
@@ -21408,7 +21353,6 @@ vi.mock("wix-members", () => ({
     name: vi.fn(),
   },
 }));
-
 vi.mock("wix-members.v2", () => ({
   __esModule: true,
   default: {
@@ -22120,7 +22064,6 @@ vi.mock("wix-members.v2", () => ({
     query: vi.fn(),
   },
 }));
-
 vi.mock("wix-notifications.v2", () => ({
   __esModule: true,
   default: {
@@ -22152,9 +22095,7 @@ vi.mock("wix-notifications.v2", () => ({
     topics: vi.fn(),
   },
 }));
-
 vi.mock("wix-packages", () => ({ __esModule: true, default: {} }));
-
 vi.mock("wix-paid-plans-backend", () => ({
   __esModule: true,
   default: {
@@ -22186,7 +22127,6 @@ vi.mock("wix-paid-plans-backend", () => ({
     period: vi.fn(),
   },
 }));
-
 vi.mock("wix-paid-plans", () => ({
   __esModule: true,
   default: {
@@ -22226,7 +22166,6 @@ vi.mock("wix-paid-plans", () => ({
     period: vi.fn(),
   },
 }));
-
 vi.mock("wix-pay-backend", () => ({
   __esModule: true,
   default: {
@@ -22266,7 +22205,6 @@ vi.mock("wix-pay-backend", () => ({
     userInfo: vi.fn(),
   },
 }));
-
 vi.mock("wix-pay-frontend", () => ({
   __esModule: true,
   default: {
@@ -22305,7 +22243,6 @@ vi.mock("wix-pay-frontend", () => ({
     code: vi.fn(),
   },
 }));
-
 vi.mock("wix-pay", () => ({
   __esModule: true,
   default: {
@@ -22344,7 +22281,6 @@ vi.mock("wix-pay", () => ({
     code: vi.fn(),
   },
 }));
-
 vi.mock("wix-payment-provider-backend", () => ({
   __esModule: true,
   default: {
@@ -22366,7 +22302,6 @@ vi.mock("wix-payment-provider-backend", () => ({
     errorMessage: vi.fn(),
   },
 }));
-
 vi.mock("wix-pricing-plans-backend", () => ({
   __esModule: true,
   default: {
@@ -22632,7 +22567,6 @@ vi.mock("wix-pricing-plans-backend", () => ({
     publicPlan: vi.fn(),
   },
 }));
-
 vi.mock("wix-pricing-plans-frontend", () => ({
   __esModule: true,
   default: {
@@ -22740,7 +22674,6 @@ vi.mock("wix-pricing-plans-frontend", () => ({
     amount: vi.fn(),
   },
 }));
-
 vi.mock("wix-pricing-plans", () => ({
   __esModule: true,
   default: {
@@ -22834,7 +22767,6 @@ vi.mock("wix-pricing-plans", () => ({
     amount: vi.fn(),
   },
 }));
-
 vi.mock("wix-pricing-plans.v2", () => ({
   __esModule: true,
   default: {
@@ -23376,7 +23308,6 @@ vi.mock("wix-pricing-plans.v2", () => ({
     arrangePlans: vi.fn(),
   },
 }));
-
 vi.mock("wix-pro-gallery-backend", () => ({
   __esModule: true,
   default: {
@@ -23540,7 +23471,6 @@ vi.mock("wix-pro-gallery-backend", () => ({
     publishGallery: vi.fn(),
   },
 }));
-
 vi.mock("wix-realtime-backend", () => ({
   __esModule: true,
   default: {
@@ -23555,7 +23485,6 @@ vi.mock("wix-realtime-backend", () => ({
     type: vi.fn(),
   },
 }));
-
 vi.mock("wix-realtime-frontend", () => ({
   __esModule: true,
   default: {
@@ -23576,7 +23505,6 @@ vi.mock("wix-realtime-frontend", () => ({
     subscriptionId: vi.fn(),
   },
 }));
-
 vi.mock("wix-realtime", () => ({
   __esModule: true,
   default: {
@@ -23597,7 +23525,6 @@ vi.mock("wix-realtime", () => ({
     subscriptionId: vi.fn(),
   },
 }));
-
 vi.mock("wix-redirects-api.v1", () => ({
   __esModule: true,
   default: {
@@ -23665,7 +23592,6 @@ vi.mock("wix-redirects-api.v1", () => ({
     callbacks: vi.fn(),
   },
 }));
-
 vi.mock("wix-reviews.v2", () => ({
   __esModule: true,
   default: {
@@ -24059,7 +23985,6 @@ vi.mock("wix-reviews.v2", () => ({
     query: vi.fn(),
   },
 }));
-
 vi.mock("wix-router", () => ({
   __esModule: true,
   default: {
@@ -24116,7 +24041,6 @@ vi.mock("wix-router", () => ({
     content: vi.fn(),
   },
 }));
-
 vi.mock("wix-search", () => ({
   __esModule: true,
   default: {
@@ -24143,7 +24067,6 @@ vi.mock("wix-search", () => ({
     facets: vi.fn(),
   },
 }));
-
 vi.mock("wix-secrets-backend", () => ({
   __esModule: true,
   default: {
@@ -24164,7 +24087,6 @@ vi.mock("wix-secrets-backend", () => ({
     description: vi.fn(),
   },
 }));
-
 vi.mock("wix-secrets-backend.v2", () => ({
   __esModule: true,
   default: {
@@ -24183,7 +24105,6 @@ vi.mock("wix-secrets-backend.v2", () => ({
     secret: vi.fn(),
   },
 }));
-
 vi.mock("wix-seo-frontend", () => ({
   __esModule: true,
   default: {
@@ -24199,7 +24120,6 @@ vi.mock("wix-seo-frontend", () => ({
     content: vi.fn(),
   },
 }));
-
 vi.mock("wix-seo", () => ({
   __esModule: true,
   default: {
@@ -24215,7 +24135,6 @@ vi.mock("wix-seo", () => ({
     content: vi.fn(),
   },
 }));
-
 vi.mock("wix-site-backend", () => ({
   __esModule: true,
   default: {
@@ -24257,7 +24176,6 @@ vi.mock("wix-site-backend", () => ({
     comment: vi.fn(),
   },
 }));
-
 vi.mock("wix-site-frontend", () => ({
   __esModule: true,
   default: {
@@ -24293,7 +24211,6 @@ vi.mock("wix-site-frontend", () => ({
     url: vi.fn(),
   },
 }));
-
 vi.mock("wix-site", () => ({
   __esModule: true,
   default: {
@@ -24329,11 +24246,8 @@ vi.mock("wix-site", () => ({
     url: vi.fn(),
   },
 }));
-
 vi.mock("wix-storage-frontend", () => ({ __esModule: true, default: {} }));
-
 vi.mock("wix-storage", () => ({ __esModule: true, default: {} }));
-
 vi.mock("wix-stores-backend", () => ({
   __esModule: true,
   default: {
@@ -24945,7 +24859,6 @@ vi.mock("wix-stores-backend", () => ({
     variants: vi.fn(),
   },
 }));
-
 vi.mock("wix-stores-frontend", () => ({
   __esModule: true,
   default: {
@@ -25067,7 +24980,6 @@ vi.mock("wix-stores-frontend", () => ({
     value: vi.fn(),
   },
 }));
-
 vi.mock("wix-stores", () => ({
   __esModule: true,
   default: {
@@ -25194,7 +25106,6 @@ vi.mock("wix-stores", () => ({
     value: vi.fn(),
   },
 }));
-
 vi.mock("wix-stores.v2", () => ({
   __esModule: true,
   default: {
@@ -26595,7 +26506,6 @@ vi.mock("wix-stores.v2", () => ({
     archived: vi.fn(),
   },
 }));
-
 vi.mock("wix-table-reservations.v2", () => ({
   __esModule: true,
   default: {
@@ -27843,7 +27753,6 @@ vi.mock("wix-table-reservations.v2", () => ({
     tableIds: vi.fn(),
   },
 }));
-
 vi.mock("wix-users-backend", () => ({
   __esModule: true,
   default: {
@@ -27931,7 +27840,6 @@ vi.mock("wix-users-backend", () => ({
     description: vi.fn(),
   },
 }));
-
 vi.mock("wix-users", () => ({
   __esModule: true,
   default: {
@@ -27974,7 +27882,6 @@ vi.mock("wix-users", () => ({
     description: vi.fn(),
   },
 }));
-
 vi.mock("wix-web-module", () => ({
   __esModule: true,
   default: {
@@ -27990,7 +27897,6 @@ vi.mock("wix-web-module", () => ({
     allowedRoles: vi.fn(),
   },
 }));
-
 vi.mock("wix-widget", () => ({
   __esModule: true,
   default: {
@@ -28001,7 +27907,6 @@ vi.mock("wix-widget", () => ({
     setProps: vi.fn(),
   },
 }));
-
 vi.mock("wix-window-frontend", () => ({
   __esModule: true,
   default: {
@@ -28166,7 +28071,6 @@ vi.mock("wix-window-frontend", () => ({
     isPrimaryLanguage: vi.fn(),
   },
 }));
-
 vi.mock("wix-window", () => ({
   __esModule: true,
   default: {
@@ -28333,7 +28237,6 @@ vi.mock("wix-window", () => ({
     isPrimaryLanguage: vi.fn(),
   },
 }));
-
 vi.mock("wix-workflows.v2", () => ({
   __esModule: true,
   default: {
@@ -28590,4 +28493,3 @@ vi.mock("wix-workflows.v2", () => ({
     setupWorkflow: vi.fn(),
   },
 }));
-
