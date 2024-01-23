@@ -1,20 +1,8 @@
-import { test, expect, vi, describe, beforeEach } from "vitest";
+import { test, expect, describe } from "vitest";
 import { test1, test2, test3 } from "src/backend/new-file.js"
 import wixData from 'wix-data';
 
-vi.mock('wix-data', () => ({
-    __esModule: true,
-    default: {
-        query: vi.fn(),
-    }
-}));
-
-
 describe('new-file.js', () => {
-    beforeEach(() => {
-        vi.resetAllMocks();
-    });
-
     test('test1', () => {
         expect(test1('hello')).toBe('hello!');
     });

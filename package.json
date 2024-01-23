@@ -3,13 +3,17 @@
     "@wix/cli": "^1.0.0",
     "@wix/eslint-plugin-cli": "^1.0.0",
     "eslint": "^8.25.0",
+    "prettier": "^3.2.4",
     "react": "16.14.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
     "vitest": "^1.2.1"
   },
   "scripts": {
     "postinstall": "wix sync-types",
     "dev": "wix dev",
     "lint": "eslint .",
-    "test": "vitest"
+    "test": "vitest",
+    "mockgen": "ts-node ./mockgen.ts"
   }
 }
