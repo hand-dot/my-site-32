@@ -26,4 +26,10 @@ describe('new-file.js', () => {
         const result = await test3();
         expect(result).toEqual(['a?', 'b?', 'c?']);
     });
+
+    test('emailCurrentMember', async () => {
+        // currentMember.getMember mock for emailCurrentMember
+        const member = { name: 'John Doe', }
+
+    })
 });

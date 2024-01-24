@@ -14,3 +14,5 @@ export const test3 = async (args) => {
     const { items } = await wixData.query('Test').find();
     return items.map(({ _id }) => _id + '?');
 }
+
+
