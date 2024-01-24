@@ -39,7 +39,8 @@ describe('real.js', () => {
         crm.triggeredEmails.emailMember.mockImplementation(() => Promise.resolve());
         const spy = vi.spyOn(crm.triggeredEmails, "emailMember");
 
-        const res = await emailCurrentMember();
+        const emailId = "U2GDBS7";
+        const res = await emailCurrentMember(emailId);
 
         expect(res).toBe(undefined);
         expect(spy).toHaveBeenCalledWith("U2GDBS7", "d9cde4f8-cd5d-42d7-a827-a59d8a7789b8", {
