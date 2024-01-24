@@ -42,7 +42,7 @@ describe('real.js', () => {
         const res = await emailCurrentMember();
 
         expect(res).toBe(undefined);
-        expect(spy).toHaveBeenCalledWith("thanks_for_joining", "d9cde4f8-cd5d-42d7-a827-a59d8a7789b8", {
+        expect(spy).toHaveBeenCalledWith("U2GDBS7", "d9cde4f8-cd5d-42d7-a827-a59d8a7789b8", {
             variables: {
                 firstName: "Kyohei",
                 lastName: "Fukuda"

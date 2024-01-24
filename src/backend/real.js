@@ -4,7 +4,7 @@ import crm from 'wix-crm-backend';
 export const emailCurrentMember = async () => {
     const member = await members.currentMember.getMember({ fieldsets: ['FULL'] })
 
-    const emailId = "thanks_for_joining";
+    const emailId = "U2GDBS7";
     const memberId = member._id;
     const options = {
         variables: {
