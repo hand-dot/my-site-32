@@ -1,8 +1,8 @@
-import members from 'wix-members-backend';
-import crm from 'wix-crm-backend';
+import { currentMember } from 'wix-members-backend';
+import { triggeredEmails } from 'wix-crm-backend';
 
 export const emailCurrentMember = async (emailId) => {
-    const member = await members.currentMember.getMember({ fieldsets: ['FULL'] })
+    const member = await currentMember.getMember({ fieldsets: ['FULL'] })
     const memberId = member._id;
     const options = {
         variables: {
@@ -11,5 +11,5 @@ export const emailCurrentMember = async (emailId) => {
         }
     }
 
-    return crm.triggeredEmails.emailMember(emailId, memberId, options);
+    return triggeredEmails.emailMember(emailId, memberId, options);
 }
