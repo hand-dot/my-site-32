@@ -1,23 +1,8 @@
 import { vi } from "vitest";
-import { currentMember } from 'wix-members-backend';
 import type { CurrentMember } from 'wix-members-backend';
 
-
-vi.mock("wix-members-backend", () => ({
-    __esModule: true,
-    default: {},
-    /** @type {CurrentMember} */
-    currentMember: {
-        getMember: vi.fn(),
-        getRoles: vi.fn(),
-        makeProfilePrivate: vi.fn(),
-        makeProfilePublic: vi.fn(),
-        updateSlug: vi.fn(),
-    }
-}));
-
-const currentMemberMock: CurrentMember = {
-    getMember: () => {
+const currentMember: CurrentMember = {
+    getMember: vi.fn(() => {
         return Promise.resolve({
             _id: "d9cde4f8-cd5d-42d7-a827-a59d8a7789b8",
             loginEmail: "kyohei@example.com",
@@ -50,17 +35,16 @@ const currentMemberMock: CurrentMember = {
                 slug: "kyoheif"
             }
         })
-    },
+    }),
     getRoles: vi.fn(),
     makeProfilePrivate: vi.fn(),
     makeProfilePublic: vi.fn(),
     updateSlug: vi.fn(),
 }
 
+vi.mock("wix-members-backend", () => ({
+    __esModule: true,
+    currentMember,
+}));
 
 
-
-export default {
-    real: { currentMember },
-    mock: { currentMember: currentMemberMock }
-}
