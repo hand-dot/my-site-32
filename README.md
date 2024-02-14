@@ -6,7 +6,7 @@
 
 A powerful testing framework that enables efficient unit testing of Wix Velo functions using the speed of [Vitest](https://vitest.dev/) and [TypeScript](https://www.typescriptlang.org/)'s type support.
 
-![2024021418071-ezgif com-video-to-gif-converter](https://github.com/hand-dot/my-site-32/assets/24843808/b1c2f5e2-65fe-483e-a18b-03437de92d01)
+https://github.com/hand-dot/my-site-32/assets/24843808/dd024c52-4705-43cc-9fdb-c3ef474e5323
 
 ## Features and Benefits
 
