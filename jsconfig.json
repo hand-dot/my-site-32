@@ -1,35 +1,27 @@
-{
-  "compilerOptions": {
-    "typeRoots": [
-      ".wix/types/wix-code-types/dist/types"
-    ],
-    "allowJs": true,
-    "moduleResolution": "node16",
-    "module": "Node16",
-    "resolveJsonModule": true,
-    "noEmit": true,
-    "checkJs": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es2020"
-  },
-  "typeAcquisition": {
-    "enable": true
-  },
-  "references": [
-    {
-      "path": ".wix/types/c1dmp/jsconfig.json"
+  {
+    "compilerOptions": {
+      "typeRoots": [
+        ".wix/types/wix-code-types/dist/types"
+      ],
     },
-    {
-      "path": ".wix/types/xuxwf/jsconfig.json"
+    "typeAcquisition": {
+      "enable": true
     },
-    {
-      "path": ".wix/types/masterPage/jsconfig.json"
-    },
-    {
-      "path": ".wix/types/backend/jsconfig.json"
-    },
-    {
-      "path": ".wix/types/public/jsconfig.json"
-    }
-  ]
-}
+    "references": [
+      {
+        "path": ".wix/types/c1dmp/jsconfig.json"
+      },
+      {
+        "path": ".wix/types/xuxwf/jsconfig.json"
+      },
+      {
+        "path": ".wix/types/masterPage/jsconfig.json"
+      },
+      {
+        "path": ".wix/types/backend/jsconfig.json"
+      },
+      {
+        "path": ".wix/types/public/jsconfig.json"
+      }
+    ]
+  }
