@@ -1,7 +1,7 @@
 import { vi } from "vitest";
 import { currentMember } from 'wix-members-backend';
+import type { CurrentMember } from 'wix-members-backend';
 
-/** @typedef {import("wix-members-backend").CurrentMember} CurrentMember*/
 
 vi.mock("wix-members-backend", () => ({
     __esModule: true,
@@ -16,8 +16,7 @@ vi.mock("wix-members-backend", () => ({
     }
 }));
 
-/** @type {CurrentMember} */
-const currentMemberMock = {
+const currentMemberMock: CurrentMember = {
     getMember: () => {
         return Promise.resolve({
             _id: "d9cde4f8-cd5d-42d7-a827-a59d8a7789b8",
@@ -57,6 +56,9 @@ const currentMemberMock = {
     makeProfilePublic: vi.fn(),
     updateSlug: vi.fn(),
 }
+
+
+
 
 export default {
     real: { currentMember },

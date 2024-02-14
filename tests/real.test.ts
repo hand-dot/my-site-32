@@ -2,6 +2,7 @@ import { test, expect, describe, vi } from "vitest";
 import { emailCurrentMember } from "../src/backend/real.js"
 import { triggeredEmails } from 'wix-crm-backend';
 
+
 describe('real.js', () => {
   test('emailCurrentMember 1', async () => {
 
@@ -9,6 +10,7 @@ describe('real.js', () => {
 
     const emailId = "U2GDBS7";
     const res = await emailCurrentMember(emailId);
+    emailCurrentMember("!")
 
     expect(res).toBe(undefined);
     expect(spy).toHaveBeenCalledWith("U2GDBS7",
