@@ -24,6 +24,9 @@
     },
     {
       "path": ".wix/types/backend/jsconfig.json"
+    },
+    {
+      "path": ".wix/types/public/jsconfig.json"
     }
   ]
 }

@@ -1,7 +1,6 @@
 import { test, expect, describe, vi } from "vitest";
 import { emailCurrentMember } from "../src/backend/real.js"
 import { triggeredEmails } from 'wix-crm-backend';
-import { mocks } from "../velo-vite-test-kit.js"
 
 describe('real.js', () => {
   test('emailCurrentMember 1', async () => {
@@ -22,7 +21,8 @@ describe('real.js', () => {
       });
   });
   test('emailCurrentMember 2', async () => {
-    triggeredEmails.emailMember.mockImplementation(mocks["wix-crm-backend"].triggeredEmails.emailMember.fail)
+    vi.mocked(triggeredEmails.emailMember).mockImplementation(() => Promise.reject('error'));
+
 
     const emailId = "U2GDBS7";
 
