@@ -1,10 +1,12 @@
+> [!WARNING]  
+> This project is currently under development and should be considered a concept at this stage.  
+> We welcome your feedback and suggestions.
+
 # Velo Test Kit
 
-A powerful testing framework that enables efficient unit testing of Wix Velo functions using the speed of Vitest and TypeScript's type support.
+A powerful testing framework that enables efficient unit testing of Wix Velo functions using the speed of [Vitest](https://vitest.dev/) and [TypeScript](https://www.typescriptlang.org/)'s type support.
 
-## Notice
-
-- This project is currently under development and should be considered a concept at this stage. We welcome your feedback and suggestions.
+![2024021418071-ezgif com-video-to-gif-converter](https://github.com/hand-dot/my-site-32/assets/24843808/b1c2f5e2-65fe-483e-a18b-03437de92d01)
 
 ## Features and Benefits
 
@@ -13,6 +15,9 @@ A powerful testing framework that enables efficient unit testing of Wix Velo fun
 - Default behaviors leverage type information for simple and secure customization, accommodating tests for various scenarios.
 
 ## Setup
+
+> [!TIP]
+> We plan to improve the setup process in the future, making it usable with just an installation.
 
 To use this library, follow the steps below for setup. This ensures anyone can start utilizing it effectively:
 
