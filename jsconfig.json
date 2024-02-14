@@ -5,9 +5,6 @@
       ],
       "checkJs": true,
     },
-    "typeAcquisition": {
-      "enable": true
-    },
     "references": [
       {
         "path": ".wix/types/c1dmp/jsconfig.json"
