@@ -20,9 +20,9 @@ describe('real.js', () => {
         }
       });
   });
+
   test('emailCurrentMember 2', async () => {
     vi.mocked(triggeredEmails.emailMember).mockImplementation(() => Promise.reject('error'));
-
 
     const emailId = "U2GDBS7";
 
