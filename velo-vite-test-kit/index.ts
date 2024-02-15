@@ -23,11 +23,10 @@ afterAll(async () => {
 
 beforeEach(async () => {
     // setup initial data
-    for (const collection of getCollections()) {
-        const model = mongoose.model(collection.collectionName, collection.schema);
-        if (collection.initialData) {
-            await model.insertMany(collection.initialData);
-        }
+    for (const { collectionName, schema, initialData } of getCollections()) {
+        const model = mongoose.model(collectionName, schema);
+        await model.insertMany(initialData);
+
     }
 });
 
@@ -36,8 +35,8 @@ afterEach(() => {
     vi.restoreAllMocks();
 
     // clear all data
-    for (const collection of getCollections()) {
-        const model = mongoose.model(collection.collectionName, collection.schema);
+    for (const { collectionName, schema } of getCollections()) {
+        const model = mongoose.model(collectionName, schema);
         model.deleteMany({});
     }
 });
