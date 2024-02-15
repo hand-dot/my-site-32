@@ -6,51 +6,6 @@ import { getCollectionModel } from './collections'
 
 type WixData = typeof _wixData;
 
-const mockWixDataQuery: WixDataQuery = {
-  find: vi.fn(() => this),
-  count: vi.fn(() => this),
-  limit: vi.fn(() => this),
-  skip: vi.fn(() => this),
-  ascending: vi.fn(() => this),
-  descending: vi.fn(() => this),
-  distinct: vi.fn(() => this),
-  fields: vi.fn(() => this),
-  include: vi.fn(() => this),
-  and: vi.fn(() => this),
-  between: vi.fn(() => this),
-  contains: vi.fn(() => this),
-  endsWith: vi.fn(() => this),
-  eq: vi.fn(() => this),
-  ge: vi.fn(() => this),
-  gt: vi.fn(() => this),
-  hasAll: vi.fn(() => this),
-  hasSome: vi.fn(() => this),
-  isEmpty: vi.fn(() => this),
-  isNotEmpty: vi.fn(() => this),
-  le: vi.fn(() => this),
-  lt: vi.fn(() => this),
-  ne: vi.fn(() => this),
-  not: vi.fn(() => this),
-  or: vi.fn(() => this),
-  startsWith: vi.fn(() => this),
-};
-
-const mockWixDataQueryResult: WixDataQueryResult = {
-  items: [],
-  currentPage: 0,
-  length: 0,
-  pageSize: 0,
-  partialIncludes: false,
-  query: mockWixDataQuery,
-  totalCount: 0,
-  totalPages: 0,
-  hasNext: vi.fn(() => false),
-  hasPrev: vi.fn(() => false),
-  next: vi.fn(() => this),
-  prev: vi.fn(() => this),
-};
-
-
 const wixData: WixData = {
   aggregate: vi.fn(),
   bulkInsert: vi.fn(),
@@ -63,30 +18,108 @@ const wixData: WixData = {
     return model.findById(itemId);
   }),
   insert: vi.fn((collectionId, item) => {
-    const model = getCollectionModel(collectionId);
     if (!item._id) {
       item._id = new mongoose.Types.ObjectId();
     }
+    const model = getCollectionModel(collectionId);
     return model.create(item);
   }),
   insertReference: vi.fn(),
   isReferenced: vi.fn(),
-  query: vi.fn((collectionId) => {
-    return {
-      ...mockWixDataQuery,
-      ...{
-        find: vi.fn(async () => {
-          const model = getCollectionModel(collectionId);
-          const items = await model.find()
-          const result: WixDataQueryResult = {
-            ...mockWixDataQueryResult,
-            items,
-            totalCount: items.length,
+  query: vi.fn(function (collectionId) {
+    const operators: { propertyName: string, value: any, operator: string }[] = [];
+    const wixDataQuery: WixDataQuery = {
+      find: vi.fn(async function () {
+        const model = getCollectionModel(collectionId);
+        const queryConditions = operators.reduce((acc, { propertyName, value, operator }) => {
+          switch (operator) {
+            case 'eq':
+              acc[propertyName] = value;
+              break;
+            case 'gt':
+              acc[propertyName] = { $gt: value };
+              break;
+            case 'lt':
+              acc[propertyName] = { $lt: value };
+              break;
+            case 'ne':
+              acc[propertyName] = { $ne: value };
+              break;
+            case 'ge':
+              acc[propertyName] = { $gte: value };
+              break;
+            case 'le':
+              acc[propertyName] = { $lte: value };
+              break;
+            // Add more operators as needed
           }
-          return result
-        })
-      }
+          return acc;
+        }, {});
+        const items = await model.find(queryConditions);
+        const result: WixDataQueryResult = {
+          items,
+          totalCount: items.length,
+          currentPage: 0,
+          length: 0,
+          pageSize: 0,
+          partialIncludes: false,
+          query: this,
+          totalPages: 0,
+          hasNext: vi.fn(() => false),
+          hasPrev: vi.fn(() => false),
+          next: function () { return this; },
+          prev: function () { return this; },
+        }
+        return result;
+      }),
+      count: function () {
+        const model = getCollectionModel(collectionId);
+        return model.countDocuments();
+      },
+      limit: function (limit) { return this; },
+      skip: function (skip) { return this; },
+      ascending: function (propertyNames) { return this; },
+      descending: function (propertyNames) { return this; },
+      distinct: function (propertyName) { return this; },
+      fields: function (propertyNames) { return this; },
+      include: function (propertyNames) { return this; },
+      and: function (query) { return this; },
+      between: function (propertyName, rangeStart, rangeEnd) { return this; },
+      contains: function (propertyName, string) { return this; },
+      endsWith: function (propertyName, string) { return this; },
+      eq: function (propertyName, value) {
+        operators.push({ propertyName, value, operator: 'eq' });
+        return this;
+      },
+      ge: function (propertyName, value) {
+        operators.push({ propertyName, value, operator: 'ge' });
+        return this;
+      },
+      gt: function (propertyName, value) {
+        operators.push({ propertyName, value, operator: 'gt' });
+        return this;
+      },
+      hasAll: function (propertyName, value) { return this; },
+      hasSome: function (propertyName, value) { return this; },
+      isEmpty: function (propertyName) { return this; },
+      isNotEmpty: function (propertyName) { return this; },
+      le: function (propertyName, value) {
+        operators.push({ propertyName, value, operator: 'le' });
+        return this;
+      },
+      lt: function (propertyName, value) {
+        operators.push({ propertyName, value, operator: 'lt' });
+        return this;
+      },
+      ne: function (propertyName, value) {
+        operators.push({ propertyName, value, operator: 'ne' });
+        return this;
+      },
+      not: function (query) { return this; },
+      or: function (query) { return this; },
+      startsWith: function (propertyName, string) { return this; },
     }
+    return wixDataQuery
   }),
   queryReferenced: vi.fn(),
   remove: vi.fn((collectionId, itemId) => {
@@ -98,14 +131,9 @@ const wixData: WixData = {
   save: vi.fn(),
   sort: vi.fn(),
   truncate: vi.fn(),
-  update: vi.fn(async (collectionId, item) => {
+  update: vi.fn((collectionId, item) => {
     const model = getCollectionModel(collectionId);
-    const updatedDoc = await model.findByIdAndUpdate(
-      item._id,
-      { $set: item },
-      { new: true }
-    );
-    return updatedDoc;
+    return model.findByIdAndUpdate(item._id, { $set: item }, { new: true });
   }),
 };
 
