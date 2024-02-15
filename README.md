@@ -211,7 +211,7 @@ describe('messageDB.js tests', () => {
     test('readAllMessages - should correctly read all messages', async () => {
         const messages = await readAllMessages();
         expect(Array.isArray(messages.items)).toBe(true);
-        expect(messages.items.length).toBeGreaterThan(0);
+        expect(messages.items.length).toBe(4);
         expect(messages.items[0].message).toBe('Test1');
         expect(messages.items[0].sender).toBe('xxx');
         expect(messages.items[0].receiver).toBe('yyy');
