@@ -2,7 +2,7 @@ import { vi } from "vitest";
 import mongoose from 'mongoose';
 import _wixData from 'wix-data';
 import type { WixDataQuery, WixDataQueryResult } from 'wix-data';
-import { getCollectionModel } from './collections'
+import { getCollectionModel } from '../utils/collections'
 
 type WixData = typeof _wixData;
 
@@ -13,15 +13,15 @@ const wixData: WixData = {
   bulkSave: vi.fn(),
   bulkUpdate: vi.fn(),
   filter: vi.fn(),
-  get: vi.fn((collectionId, itemId) => {
-    const model = getCollectionModel(collectionId);
+  get: vi.fn(async (collectionId, itemId) => {
+    const model = await getCollectionModel(collectionId);
     return model.findById(itemId);
   }),
-  insert: vi.fn((collectionId, item) => {
+  insert: vi.fn(async (collectionId, item) => {
     if (!item._id) {
       item._id = new mongoose.Types.ObjectId();
     }
-    const model = getCollectionModel(collectionId);
+    const model = await getCollectionModel(collectionId);
     return model.create(item);
   }),
   insertReference: vi.fn(),
@@ -30,7 +30,7 @@ const wixData: WixData = {
     const operators: { propertyName: string, value: any, operator: string }[] = [];
     const wixDataQuery: WixDataQuery = {
       find: vi.fn(async function () {
-        const model = getCollectionModel(collectionId);
+        const model = await getCollectionModel(collectionId);
         const queryConditions = operators.reduce((acc, { propertyName, value, operator }) => {
           switch (operator) {
             case 'eq':
@@ -72,8 +72,8 @@ const wixData: WixData = {
         }
         return result;
       }),
-      count: function () {
-        const model = getCollectionModel(collectionId);
+      count: async () => {
+        const model = await getCollectionModel(collectionId);
         return model.countDocuments();
       },
       limit: function (limit) { return this; },
@@ -122,8 +122,8 @@ const wixData: WixData = {
     return wixDataQuery
   }),
   queryReferenced: vi.fn(),
-  remove: vi.fn((collectionId, itemId) => {
-    const model = getCollectionModel(collectionId);
+  remove: vi.fn(async (collectionId, itemId) => {
+    const model = await getCollectionModel(collectionId);
     return model.findByIdAndDelete(itemId);
   }),
   removeReference: vi.fn(),
@@ -131,8 +131,8 @@ const wixData: WixData = {
   save: vi.fn(),
   sort: vi.fn(),
   truncate: vi.fn(),
-  update: vi.fn((collectionId, item) => {
-    const model = getCollectionModel(collectionId);
+  update: vi.fn(async (collectionId, item) => {
+    const model = await getCollectionModel(collectionId);
     return model.findByIdAndUpdate(item._id, { $set: item }, { new: true });
   }),
 };

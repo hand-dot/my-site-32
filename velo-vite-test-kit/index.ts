@@ -1,11 +1,11 @@
 import { vi, beforeEach, afterEach, beforeAll, afterAll } from "vitest";
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
-import { getCollections } from './collections'
+import { getCollections } from './utils/collections'
 
-import './wix-crm-backend';
-import './wix-members-backend';
-import './wix-data';
+import './mocks/wix-crm-backend';
+import './mocks/wix-members-backend';
+import './mocks/wix-data';
 
 global.mongoServer = null;
 
@@ -23,7 +23,7 @@ afterAll(async () => {
 
 beforeEach(async () => {
     // setup initial data
-    for (const { collectionName, schema, initialData } of getCollections()) {
+    for (const { collectionName, schema, initialData } of await getCollections()) {
         const model = mongoose.model(collectionName, schema);
         await model.insertMany(initialData);
 
@@ -35,7 +35,8 @@ afterEach(async () => {
     vi.restoreAllMocks();
 
     // clear all data
-    await Promise.all(getCollections().map(async ({ collectionName }) => {
+    const collections = await getCollections();
+    await Promise.all(collections.map(async ({ collectionName }) => {
         const model = mongoose.models[collectionName] || mongoose.model(collectionName, new mongoose.Schema({}));
         await model.deleteMany({});
     }));
