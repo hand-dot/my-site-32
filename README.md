@@ -128,16 +128,16 @@ velo-test-kit enables database testing. At the start of a test, it launches a [M
 All functions from the `wix-data` package called within a test case access this MongoDB instead of Wix CMS. Databases are initialized within each test case, allowing easy testing of functions with side effects.
 
 It's also straightforward to set and initialize data equivalent to Wix CMS collections from a configuration file.
+Currently, at the start of the test, files under [`velo-vite-test-kit/configs/CMS`](https://github.com/hand-dot/my-site-32/tree/main/velo-vite-test-kit/configs/CMS) are scanned to initialize collections for testing.
 
-Currently, at the start of the test, files under `velo-vite-test-kit/configs/CMS` are scanned to initialize collections for testing.
 
-Here's a specific example:
-
+Here's a specific example:  
 To simulate a `messages` collection, create the following CMS configuration file:
 
-velo-vite-test-kit/configs/CMS/messages.ts
+![Untitled](https://github.com/hand-dot/my-site-32/assets/24843808/1617cc65-d4fb-4e32-80f5-4e57188058d4)
 
-```tsx
+[velo-vite-test-kit/configs/CMS/messages.ts](https://github.com/hand-dot/my-site-32/blob/main/velo-vite-test-kit/configs/CMS/messages.ts)
+```ts
 const schema = {
     _id: String,
     message: String,
@@ -161,9 +161,8 @@ export default {
 
 For a backend function using wix-data, like this:
 
-src/backend/messageDB.js
-
-```jsx
+[src/backend/messageDB.js](https://github.com/hand-dot/my-site-32/blob/main/src/backend/messageDB.js)
+```js
 import wixData from 'wix-data';
 
 export const readAllMessages = async () => {
@@ -196,9 +195,8 @@ export const deleteMessage = async (messageId) => {
 
 You can write tests like these:
 
-tests/messageDB.test.ts
-
-```tsx
+[tests/messageDB.test.ts](https://github.com/hand-dot/my-site-32/blob/main/tests/messageDB.test.ts)
+```ts
 import { test, expect, describe } from "vitest";
 import {
     readAllMessages,
