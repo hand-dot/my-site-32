@@ -30,13 +30,13 @@ beforeEach(async () => {
     }
 });
 
-afterEach(() => {
+afterEach(async () => {
     vi.resetAllMocks();
     vi.restoreAllMocks();
 
     // clear all data
-    for (const { collectionName, schema } of getCollections()) {
-        const model = mongoose.model(collectionName, schema);
-        model.deleteMany({});
-    }
+    await Promise.all(getCollections().map(async ({ collectionName }) => {
+        const model = mongoose.models[collectionName] || mongoose.model(collectionName, new mongoose.Schema({}));
+        await model.deleteMany({});
+    }));
 });

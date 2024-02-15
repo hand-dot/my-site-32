@@ -1,4 +1,5 @@
 import { vi } from "vitest";
+import mongoose from 'mongoose';
 import _wixData from 'wix-data';
 import type { WixDataQuery, WixDataQueryResult } from 'wix-data';
 import { getCollectionModel } from './collections'
@@ -57,8 +58,17 @@ const wixData: WixData = {
   bulkSave: vi.fn(),
   bulkUpdate: vi.fn(),
   filter: vi.fn(),
-  get: vi.fn(),
-  insert: vi.fn(),
+  get: vi.fn((collectionId, itemId) => {
+    const model = getCollectionModel(collectionId);
+    return model.findById(itemId);
+  }),
+  insert: vi.fn((collectionId, item) => {
+    const model = getCollectionModel(collectionId);
+    if (!item._id) {
+      item._id = new mongoose.Types.ObjectId();
+    }
+    return model.create(item);
+  }),
   insertReference: vi.fn(),
   isReferenced: vi.fn(),
   query: vi.fn((collectionId) => {
@@ -66,8 +76,8 @@ const wixData: WixData = {
       ...mockWixDataQuery,
       ...{
         find: vi.fn(async () => {
-          const collection = getCollectionModel(collectionId);
-          const items = await collection.find()
+          const model = getCollectionModel(collectionId);
+          const items = await model.find()
           const result: WixDataQueryResult = {
             ...mockWixDataQueryResult,
             items,
@@ -79,13 +89,24 @@ const wixData: WixData = {
     }
   }),
   queryReferenced: vi.fn(),
-  remove: vi.fn(),
+  remove: vi.fn((collectionId, itemId) => {
+    const model = getCollectionModel(collectionId);
+    return model.findByIdAndDelete(itemId);
+  }),
   removeReference: vi.fn(),
   replaceReferences: vi.fn(),
   save: vi.fn(),
   sort: vi.fn(),
   truncate: vi.fn(),
-  update: vi.fn(),
+  update: vi.fn(async (collectionId, item) => {
+    const model = getCollectionModel(collectionId);
+    const updatedDoc = await model.findByIdAndUpdate(
+      item._id,
+      { $set: item },
+      { new: true }
+    );
+    return updatedDoc;
+  }),
 };
 
 vi.mock("wix-data", () => ({
