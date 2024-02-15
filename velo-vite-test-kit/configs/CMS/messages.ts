@@ -13,7 +13,4 @@ const data = [
     { _id: '4', message: 'Test4', sender: 'xxx', receiver: 'yyy', viewed: true },
 ]
 
-export default {
-    schema,
-    data
-}
+export default { schema, data }

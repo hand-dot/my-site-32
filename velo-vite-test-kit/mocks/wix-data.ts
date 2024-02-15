@@ -133,7 +133,7 @@ const wixData: WixData = {
   truncate: vi.fn(),
   update: vi.fn(async (collectionId, item) => {
     const model = await getCollectionModel(collectionId);
-    return model.findByIdAndUpdate(item._id, { $set: item }, { new: true });
+    return model.findByIdAndUpdate(item._id, item)
   }),
 };
 
