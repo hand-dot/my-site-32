@@ -64,6 +64,57 @@ export const readMessageByID = async (messageId) => {
     */
 }
 
+// const receiverId = "d9cde4f8-cd5d-42d7-a827-a59d8a7789b8"
+export const findUnreadMessages = async (receiverId) => {
+    return wixData.query("messages")
+        .eq("receiver", receiverId)
+        .eq("viewed", false)
+        .find()
+    /*
+    {
+        "items": [
+            {
+            "viewed": false,
+            "_id": "7d1a4938-d51d-4d2a-9630-0e6f4212560c",
+            "_owner": "d9cde4f8-cd5d-42d7-a827-a59d8a7789b8",
+            "_createdDate": "2024-02-15T04:06:01.302Z",
+            "receiver": "d9cde4f8-cd5d-42d7-a827-a59d8a7789b8",
+            "_updatedDate": "2024-02-15T04:06:46.081Z",
+            "sender": "d9cde4f8-cd5d-42d7-a827-a59d8a7789b8",
+            "message": "msg"
+            }
+        ],
+        "length": 1,
+        "partialIncludes": false,
+        "query": {
+            "invalidArguments": [],
+            "filterTree": {
+            "$and": [
+                {
+                "receiver": "d9cde4f8-cd5d-42d7-a827-a59d8a7789b8"
+                },
+                {
+                "viewed": false
+                }
+            ]
+            },
+            "encoder": {},
+            "provider": {
+            "cloudDataUrl": "",
+            "gridAppId": "b71a739c-a932-4b1f-9164-d8201ea03570",
+            "segment": "SANDBOX"
+            },
+            "collectionName": "messages",
+            "skipNumber": 0,
+            "included": [],
+            "projectedFields": []
+        },
+        "totalCount": 1,
+        "totalPages": 1
+    }
+    */
+}
+
 /*
 const toInsert = {
   "viewed": true,
@@ -127,5 +178,5 @@ export const deleteMessage = async (messageId) => {
         "sender": "af2e66fd-181b-4fa9-b95e-7c1d69443be7",
         "message": "こんちわ----っす"
     }
-    */  
+    */
 }

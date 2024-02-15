@@ -14,5 +14,9 @@
     "lint": "eslint .",
     "test": "vitest",
     "mockgen": "ts-node ./mockgen.ts"
+  },
+  "dependencies": {
+    "mongodb-memory-server": "^9.1.6",
+    "mongoose": "^8.1.2"
   }
 }
