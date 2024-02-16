@@ -3,7 +3,7 @@ import path from 'path';
 import mongoose from 'mongoose';
 import type { Schema, Document, SchemaDefinition } from 'mongoose';
 
-const collectionsDirectory = path.join(process.cwd(), 'velo-vite-test-kit/configs/CMS');
+const collectionsDirectory = path.join(process.cwd(), 'velo-test-kit/CMS');
 
 const createSchema = <T extends Document>(definition: SchemaDefinition): Schema<T> => new mongoose.Schema<T>(definition, { timestamps: true })
 
