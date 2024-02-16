@@ -3,8 +3,6 @@
     "@wix/cli": "^1.0.0",
     "@wix/eslint-plugin-cli": "^1.0.0",
     "eslint": "^8.25.0",
-    "mongodb-memory-server": "^9.1.6",
-    "mongoose": "^8.1.2",
     "prettier": "^3.2.4",
     "react": "16.14.0",
     "typescript": "^5.3.3",
