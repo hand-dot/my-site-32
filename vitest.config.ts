@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitest/config';
 export default defineConfig({
     test: {
-        setupFiles: ['./velo-vite-test-kit/index.ts'],
+        setupFiles: ['velo-test-kit'],
     },
 });
